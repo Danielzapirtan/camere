@@ -3,7 +3,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
 export const ANALYSIS_MODEL = "gemini-3.1-flash-lite-preview";
-export const IMAGE_MODEL = "gemini-3.1-flash-image-preview";
+export const IMAGE_MODEL = "gemini-2.5-flash-tts";
 
 export interface RedecorationSuggestion {
   style: string;
