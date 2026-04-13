@@ -34,13 +34,6 @@ export const PanoramaViewer: React.FC<PanoramaViewerProps> = ({ imageUrl }) => {
           className="h-full w-auto max-w-none select-none pointer-events-none"
           referrerPolicy="no-referrer"
         />
-        {/* Repeat the image for seamless-ish feel if it's a true panorama */}
-        <img 
-          src={imageUrl} 
-          alt="Panorama View Repeat" 
-          className="h-full w-auto max-w-none select-none pointer-events-none"
-          referrerPolicy="no-referrer"
-        />
       </motion.div>
       
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full text-[10px] text-white/70 uppercase tracking-widest pointer-events-none">

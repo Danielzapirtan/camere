@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Camera, Upload, Sparkles, Palette, Lightbulb, Sofa, ArrowRight, Loader2, RefreshCw } from 'lucide-react';
+import { Camera, Upload, Sparkles, Palette, Lightbulb, Sofa, ArrowRight, Loader2, RefreshCw, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -54,10 +54,21 @@ export default function RedecoratorApp() {
       toast.success("Panorama a fost generată!");
     } catch (error) {
       console.error(error);
-      toast.error(`Generarea panoramei a eșuat. ${error}`);
+      toast.error("Generarea panoramei a eșuat.");
     } finally {
       setIsGenerating(false);
     }
+  };
+
+  const handleDownload = () => {
+    if (!panoramaUrl) return;
+    const link = document.createElement('a');
+    link.href = panoramaUrl;
+    link.download = `redecorare-panorama-${Date.now()}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    toast.success("Descărcarea a început!");
   };
 
   return (
@@ -226,11 +237,24 @@ export default function RedecoratorApp() {
           <div className="sticky top-24 space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-semibold uppercase tracking-widest text-white/50">Vizualizarea Redecorării</h2>
-              {panoramaUrl && (
-                <Badge variant="outline" className="border-orange-500/50 text-orange-500">
-                  400° Cilindrică
-                </Badge>
-              )}
+              <div className="flex items-center gap-2">
+                {panoramaUrl && (
+                  <>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-white/50 hover:text-white hover:bg-white/5 h-8 w-8 p-0 rounded-full"
+                      onClick={handleDownload}
+                      title="Descarcă Panorama"
+                    >
+                      <Download className="w-4 h-4" />
+                    </Button>
+                    <Badge variant="outline" className="border-orange-500/50 text-orange-500">
+                      400° Cilindrică
+                    </Badge>
+                  </>
+                )}
+              </div>
             </div>
 
             <div className="aspect-video lg:aspect-square rounded-2xl bg-white/5 border border-white/10 overflow-hidden flex flex-col items-center justify-center relative">

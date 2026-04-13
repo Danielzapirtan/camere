@@ -68,14 +68,13 @@ export async function generatePanorama(prompt: string): Promise<string> {
     contents: {
       parts: [
         {
-          text: `${prompt}. The image MUST be a seamless 400-degree cylindrical panorama. Ultra-wide aspect ratio. No watermarks. Photorealistic 8k resolution.`,
+          text: `${prompt}. The image MUST be a seamless 400-degree cylindrical panorama. Ultra-wide view. No watermarks. Photorealistic 8k resolution.`,
         },
       ],
     },
     config: {
       imageConfig: {
-        aspectRatio: "8:1", // Wide for panorama
-        imageSize: "4K",
+        aspectRatio: "16:9", // Widest supported by 2.5-flash-image
       },
     },
   });
