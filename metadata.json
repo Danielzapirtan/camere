@@ -1,0 +1,6 @@
+{
+  "name": "Panorama Decor AI",
+  "description": "Redecorează-ți spațiul cu panorame cilindrice de 400 de grade generate de AI.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["imageGeneration", "vision"]
+}
