@@ -39,7 +39,7 @@ export default function RedecoratorApp() {
       toast.success("Camera a fost analizată cu succes!");
     } catch (error) {
       console.error(error);
-      toast.error("Analiza camerei a eșuat. Te rugăm să încerci din nou.");
+      toast.error(`Analiza camerei a eșuat: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setIsAnalyzing(false);
     }
@@ -54,7 +54,7 @@ export default function RedecoratorApp() {
       toast.success("Panorama a fost generată!");
     } catch (error) {
       console.error(error);
-      toast.error("Generarea panoramei a eșuat.");
+      toast.error(`Generarea panoramei a eșuat: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setIsGenerating(false);
     }
