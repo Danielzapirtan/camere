@@ -54,7 +54,7 @@ export default function RedecoratorApp() {
       toast.success("Panorama a fost generată!");
     } catch (error) {
       console.error(error);
-      toast.error("Generarea panoramei a eșuat.");
+      toast.error(`Generarea panoramei a eșuat. ${error}`);
     } finally {
       setIsGenerating(false);
     }
